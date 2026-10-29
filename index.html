@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunter x Hunter - Hunter Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #101a18;
+            color: #f4f1df;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #9bdc28;
+            margin-bottom: 8px;
+            text-shadow: 0 0 12px rgba(155, 220, 40, 0.25);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #c4c9a8;
+            margin: 0 0 25px 0;
+        }
+
+        .activity {
+            max-width: 1000px;
+            margin: 0 auto 25px auto;
+            padding: 18px 22px;
+            background-color: #1c2b25;
+            border-left: 5px solid #9bdc28;
+            border-radius: 8px;
+            line-height: 1.5;
+        }
+
+        .activity h2 {
+            color: #f2c14e;
+            margin-top: 0;
+        }
+
+        .activity ol {
+            margin-bottom: 0;
+            padding-left: 22px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .search-container input {
+            padding: 11px;
+            font-size: 16px;
+            width: 260px;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #9bdc28;
+            background-color: #f4f1df;
+            color: #17221d;
+        }
+
+        .search-container button {
+            padding: 10px 17px;
+            font-size: 16px;
+            background-color: #9bdc28;
+            color: #17221d;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #263b32;
+            border: 1px solid #526d48;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 235px;
+            object-fit: cover;
+            background-color: #17221d;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin: 12px 8px 6px 8px;
+            color: #f2c14e;
+        }
+
+        .card p {
+            margin: 0 8px;
+            color: #c4c9a8;
+        }
+
+        .card button {
+            margin-top: 12px;
+            background-color: #d69e28;
+            color: #17221d;
+            border: none;
+            padding: 8px 13px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .pagination button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #d69e28;
+            color: #17221d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background-color: #263b32;
+            border: 2px solid #9bdc28;
+            padding: 22px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            max-width: 430px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-content img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #d69e28;
+        }
+
+        .modal-content h2 {
+            color: #f2c14e;
+        }
+
+        .modal-content p {
+            color: #e1e5d2;
+            line-height: 1.4;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 8px;
+            right: 14px;
+            font-size: 28px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .show-modal {
+            display: flex;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            .search-container input { width: 190px; }
+            .activity { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hunter x Hunter — Hunter Database</h1>
+    <p class="subtitle">Asociación de Cazadores · Registro de usuarios de Nen</p>
+
+    <div class="activity">
+        <h2>📜 Nueva actividad: Examen de Cazador</h2>
+        <p>Desarrolla una página que consulte el archivo <strong>hxh.json</strong> y muestre los personajes de Hunter x Hunter.</p>
+        <ol>
+            <li>Selecciona el contenedor principal de tarjetas mediante <strong>getElementsByClassName</strong> y establece un límite de 20 personajes por página.</li>
+            <li>Selecciona los botones de paginación y crea una variable para controlar la página actual. Los botones «ANTERIOR» y «SIGUIENTE» deben cambiar de página.</li>
+            <li>Prepara un modal que muestre la imagen, el nombre, el estado, el tipo de Nen y la ubicación del personaje. Debe poder abrirse al pulsar una tarjeta y cerrarse con la X.</li>
+            <li>Crea una función asíncrona que utilice <strong>fetch</strong> y <strong>await</strong> para cargar el JSON. Comprueba <strong>response.ok</strong> antes de convertir la respuesta con <strong>response.json()</strong>.</li>
+            <li>Utiliza <strong>map</strong> para recorrer los personajes y crea las tarjetas con <strong>createElement</strong>, <strong>classList.add</strong> y <strong>appendChild</strong>. Cada tarjeta debe mostrar la imagen, el nombre y el tipo de Nen.</li>
+            <li>Añade un buscador por nombre. Al pulsar «BUSCAR», muestra el personaje cuyo nombre coincida exactamente con el texto escrito. Si no existe, muestra un <strong>alert</strong>.</li>
+            <li>Controla la visibilidad de los botones de paginación según la página actual. Al realizar una búsqueda, vuelve a la primera página.</li>
+        </ol>
+        <p><strong>Importante:</strong> utiliza únicamente las herramientas y métodos trabajados en el ejercicio anterior. No hace falta añadir filtros avanzados ni librerías externas.</p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Nombre exacto del personaje...">
+        <button id="search-btn">BUSCAR</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="pagination" id="render-more">
+        <button id="btn-prev" style="display: none;">ANTERIOR</button>
+        <button id="btn-next">SIGUIENTE</button>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <img id="modal-img" src="" alt="Imagen del personaje">
+            <h2 id="modal-name"></h2>
+            <p id="modal-status"></p>
+            <p id="modal-species"></p>
+            <p id="modal-affiliation"></p>
+            <p id="modal-arc"></p>
+            <p id="modal-location"></p>
+            <p id="modal-abilities"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
