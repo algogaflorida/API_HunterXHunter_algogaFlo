@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -150,6 +151,7 @@
             align-items: center;
             padding: 10px;
             box-sizing: border-box;
+            z-index: 1000;
         }
 
         .modal-content {
@@ -165,12 +167,49 @@
             overflow-y: auto;
         }
 
-        .modal-content img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
+        /* CARRUSEL DE IMÁGENES */
+        .image-carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            margin: 20px 0 30px 0;
+        }
+
+        .image-carousel img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 10px;
             border: 3px solid #d69e28;
+            background-color: #17221d;
+        }
+
+        .carousel-btn {
+            background-color: #d69e28;
+            color: #17221d;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .carousel-btn:hover {
+            background-color: #f2c14e;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: -23px;
+            left: 0;
+            right: 0;
+            color: #c4c9a8;
+            font-size: 13px;
         }
 
         .modal-content h2 {
@@ -189,6 +228,7 @@
             font-size: 28px;
             cursor: pointer;
             color: white;
+            z-index: 2;
         }
 
         .show-modal {
@@ -199,6 +239,20 @@
             body { padding: 12px; }
             .search-container input { width: 190px; }
             .activity { padding: 15px; }
+
+            .image-carousel {
+                gap: 5px;
+            }
+
+            .image-carousel img {
+                width: 180px;
+                height: 200px;
+            }
+
+            .carousel-btn {
+                width: 30px;
+                height: 30px;
+            }
         }
     </style>
 </head>
@@ -208,18 +262,18 @@
     <p class="subtitle">Asociación de Cazadores · Registro de usuarios de Nen</p>
 
     <div class="activity">
-        <h2>📜 Nueva actividad: Examen de Cazador</h2>
-        <p>Desarrolla una página que consulte el archivo <strong>hxh.json</strong> y muestre los personajes de Hunter x Hunter.</p>
+        <h2>Examen de Cazador</h2>
+        <p>Desarrolla una página que consulte el archivo <strong>hxh_corregido.json</strong> y muestre los personajes de Hunter x Hunter.</p>
         <ol>
-            <li>Selecciona el contenedor principal de tarjetas mediante <strong>getElementsByClassName</strong> y establece un límite de 20 personajes por página.</li>
+            <li>Selecciona el contenedor principal de tarjetas y establece un límite de 20 personajes por página.</li>
             <li>Selecciona los botones de paginación y crea una variable para controlar la página actual. Los botones «ANTERIOR» y «SIGUIENTE» deben cambiar de página.</li>
             <li>Prepara un modal que muestre la imagen, el nombre, el estado, el tipo de Nen y la ubicación del personaje. Debe poder abrirse al pulsar una tarjeta y cerrarse con la X.</li>
-            <li>Crea una función asíncrona que utilice <strong>fetch</strong> y <strong>await</strong> para cargar el JSON. Comprueba <strong>response.ok</strong> antes de convertir la respuesta con <strong>response.json()</strong>.</li>
-            <li>Utiliza <strong>map</strong> para recorrer los personajes y crea las tarjetas con <strong>createElement</strong>, <strong>classList.add</strong> y <strong>appendChild</strong>. Cada tarjeta debe mostrar la imagen, el nombre y el tipo de Nen.</li>
+            <li>Crea una función asíncrona para cargar el JSON. Comprueba antes de convertir la respuesta.</li>
+            <li>Utiliza la función necesario para recorrer los personajes y crea las tarjetas. Cada tarjeta debe mostrar la imagen, el nombre y el tipo de Nen.</li>
             <li>Añade un buscador por nombre. Al pulsar «BUSCAR», muestra el personaje cuyo nombre coincida exactamente con el texto escrito. Si no existe, muestra un <strong>alert</strong>.</li>
             <li>Controla la visibilidad de los botones de paginación según la página actual. Al realizar una búsqueda, vuelve a la primera página.</li>
         </ol>
-        <p><strong>Importante:</strong> utiliza únicamente las herramientas y métodos trabajados en el ejercicio anterior. No hace falta añadir filtros avanzados ni librerías externas.</p>
+        <p><strong>Importante:</strong> utiliza únicamente las herramientas y métodos trabajados en el ejercicio anterior. No se deben falta añadir filtros avanzados ni librerías externas.</p>
     </div>
 
     <div class="search-container">
@@ -234,10 +288,21 @@
         <button id="btn-next">SIGUIENTE</button>
     </div>
 
+    <!-- MODAL CON CARRUSEL -->
     <div class="modal" id="modal">
         <div class="modal-content">
             <span class="close-button" id="close-modal">&times;</span>
-            <img id="modal-img" src="" alt="Imagen del personaje">
+
+            <div class="image-carousel">
+                <button id="prev-image" class="carousel-btn" type="button">&#10094;</button>
+
+                <img id="modal-img" src="" alt="Imagen del personaje">
+
+                <button id="next-image" class="carousel-btn" type="button">&#10095;</button>
+
+                <span id="image-counter" class="image-counter"></span>
+            </div>
+
             <h2 id="modal-name"></h2>
             <p id="modal-status"></p>
             <p id="modal-species"></p>
@@ -251,3 +316,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+```
