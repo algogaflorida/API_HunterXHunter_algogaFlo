@@ -1,9 +1,9 @@
-En este proyecto he realizado una API propia de una de mis series favoritas, con tal y repasar el temario.
+En este proyecto he realizado un JSON propio de una de mis series favoritas, con tal y repasar el temario.
 El repositorio incluye:
-  - hxh.json (API)
+  - hxh.json (JSON)
   - index.html (archivo index tematizado para realizar las actividades, con enunciados incluidos para que no te pierdas en el proceso)
   - script.js (archivo en vacío para comenzar la actividad)
-Para ejecutar la API en local:
+Para ejecutar el JSON en local:
   - A ver, sinceramente sólo he probado con Node.js. Pasos:
     1. Descarga Node.js
     2. Una vez instalado, abre el CMD y haz cd hasta la ruta donde se encuentre hxh.json.
